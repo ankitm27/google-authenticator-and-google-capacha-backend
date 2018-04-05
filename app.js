@@ -4,15 +4,16 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-const cors = require('cors')
+const cors = require('cors');
+const dotenv = require('dotenv');
 
 const usersRouter = require('./routes/users.js');
 
 let app = express();
 
-// view engine setup
+dotenv.load();
 
-mongoose.connect("mongodb://13.127.208.231/jetpy", {
+mongoose.connect("mongodb://" + process.env.MONGO_ADDRESS + "/" + process.env.DATABASE, {
   useMongoClient: true
 });
 
@@ -27,6 +28,7 @@ mongoose.connection.on('open', function() {
 });
 
 
+// view engine setup
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

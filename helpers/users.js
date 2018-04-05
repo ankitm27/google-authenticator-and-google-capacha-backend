@@ -13,7 +13,7 @@ let users = {
             iat: moment().unix(),
             exp: moment().add(7, 'days').unix()
         };
-        return jwt.sign(payload, "check");
+        return jwt.sign(payload, process.env.JWT_KEY);
     }
 };
 

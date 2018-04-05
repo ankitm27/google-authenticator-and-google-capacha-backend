@@ -1,5 +1,5 @@
 const User = require('./../../models/User.js');
-const responseMessage = require('./../responseFunction.js');
+const responseMessage = require('./../responseMessage.js');
 
 let users = {
     saveData: (uuid,email, password, cb) => {

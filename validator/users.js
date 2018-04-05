@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 const universalFunction = require('./../helpers/universalFunction.js');
-const responseMessage = require('./../helpers/responseFunction.js');
+const responseMessage = require('./../helpers/responseMessage.js');
 
 
 let users = {

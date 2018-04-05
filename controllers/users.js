@@ -2,7 +2,7 @@ const uuid = require('uuid/v4');
 const crypto = require('crypto');
 
 const universalFunction = require('./../helpers/universalFunction.js');
-const responseMessage = require('./../helpers/responseFunction.js');
+const responseMessage = require('./../helpers/responseMessage.js');
 const usersDb = require('./../helpers/dbHelper/users.js');
 const userHelper = require('./../helpers/users.js');
 

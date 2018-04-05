@@ -1,6 +1,6 @@
 const moment = require('moment');
 const jwt = require('jsonwebtoken');
-const responseMessage = require('./responseFunction.js');
+const responseMessage = require('./responseMessage.js');
 
 let users = {
     generateToken: (uuid) => {

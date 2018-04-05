@@ -5,9 +5,9 @@ exports.ERROR = {
         customMessage : 'Error in query',
         type : 'BAD_REQUEST'
     },
-    DATA_NOT_PRESENT : {
+    USER_NOT_PRESENT : {
         statusCode:400,
-        customMessage : 'Data is not present',
+        customMessage : 'User is not present',
         type : 'BAD_REQUEST'
     },
     ERROR_IN_SIGNUP:{
@@ -19,6 +19,16 @@ exports.ERROR = {
         statusCode:400,
         customMessage:"Please provide valid data",
         type:"ERROR_IN_DATA"
+    },
+    USER_ALREADY_PRESENT:{
+        statusCode:400,
+        customMessage:"please provide new email id",
+        type:"ERROR_IN_DATA"
+    },
+    PASSWORD_NOT_MATCH:{
+        statusCode:400,
+        customMessage:"Please provide valid password",
+        type:"PASSWORD_NOT_MATCH"
     }
 };
 
@@ -31,7 +41,7 @@ exports.SUCCESS = {
         type: 'SUCCESSFULLY_GET_DATA'
     },
     SUCCESSFULLY_SIGNUP : {
-        statusCode: 200,
+        statusCode: 201,
         customMessage: 'Successfully signup',
         type: 'SUCCESSFULLY_SIGNUP'
     },

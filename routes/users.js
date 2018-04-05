@@ -7,5 +7,6 @@ const userValidator = require('./../validator/users.js');
 
 
 router.post('/signup', userValidator.signUp,users.signUp);
+router.post('/login',userValidator.login,users.login);
 
 module.exports = router;

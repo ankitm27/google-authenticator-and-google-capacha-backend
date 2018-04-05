@@ -1,0 +1,4 @@
+HASH_KEY = "xxxxx"
+JWT_KEY = "xxxxx"
+MONGO_ADDRESS = "x.x.x.x"
+DATABASE = "xxxxx"

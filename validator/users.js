@@ -23,7 +23,7 @@ let users = {
     },
 
 
-    login : (req,res,next) => {
+    authenticateEmailPassword : (req,res,next) => {
         const schema = Joi.object().keys({
             email:Joi.string().required(),
             password:Joi.string().required()
@@ -31,6 +31,25 @@ let users = {
         let validateRequest = Joi.validate({
             email:req.body.email,
             password:req.body.password
+        },schema);
+
+        if(validateRequest.error){
+            return universalFunction.sendError(responseMessage.ERROR.PROVIDE_VALID_DATA,res);
+        }
+
+        next();
+    },
+
+    login : (req,res,next) => {
+        const schema = Joi.object().keys({
+            email:Joi.string().required(),
+            password:Joi.string().required(),
+            secret:Joi.string().required()
+        });
+        let validateRequest = Joi.validate({
+            email:req.body.email,
+            password:req.body.password,
+            secret:req.body.secret
         },schema);
 
         if(validateRequest.error){

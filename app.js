@@ -8,6 +8,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 
 const usersRouter = require('./routes/users.js');
+const walletRouter = require('./routes/wallet.js');
 
 let app = express();
 
@@ -42,6 +43,8 @@ app.use(cors());
 
 
 app.use('/users', usersRouter);
+app.all('/wallet/*', [require('./validator/tokenValidator.js')]);
+app.use('/wallet',walletRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

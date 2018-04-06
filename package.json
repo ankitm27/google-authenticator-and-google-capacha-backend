@@ -9,8 +9,10 @@
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.4",
     "crypto": "^1.0.1",
+    "crypto2": "^1.0.3",
     "debug": "~2.6.9",
     "dotenv": "^5.0.1",
+    "ethers": "^3.0.9",
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
     "joi": "^13.1.2",
@@ -19,6 +21,8 @@
     "mongoose": "^5.0.13",
     "morgan": "~1.9.0",
     "pug": "2.0.0-beta11",
+    "qrcode": "^1.2.0",
+    "speakeasy": "^2.0.0",
     "uuid": "^3.2.1"
   }
 }

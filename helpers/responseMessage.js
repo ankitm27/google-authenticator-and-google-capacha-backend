@@ -29,6 +29,21 @@ exports.ERROR = {
         statusCode:400,
         customMessage:"Please provide valid password",
         type:"PASSWORD_NOT_MATCH"
+    },
+    OTP_NOT_MATCH:{
+        statusCode:400,
+        customMessage:"Please provide valid otp",
+        type:"PASSWORD_NOT_MATCH"
+    },
+    TOKEN_NOT_VALID:{
+        statusCode:400,
+        customMessage:"Please provide valid token",
+        type:"PASSWORD_NOT_MATCH"
+    },
+    TOKEN_EXPIRE:{
+        statusCode:400,
+        customMessage:"Token is expire",
+        type:"TOKEN_EXPIRE"
     }
 };
 
@@ -44,5 +59,10 @@ exports.SUCCESS = {
         statusCode: 201,
         customMessage: 'Successfully signup',
         type: 'SUCCESSFULLY_SIGNUP'
+    },
+    SUCCESSFULLY_AUTHENTICATE_DATA : {
+        statusCode: 200,
+        customMessage: 'Successfully authenticate data',
+        type: 'SUCCESSFULLY_AUTHENTICATE'
     },
 };

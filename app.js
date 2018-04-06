@@ -30,7 +30,6 @@ mongoose.connection.on('open', function() {
 
 
 // view engine setup
-
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
@@ -45,6 +44,10 @@ app.use(cors());
 app.use('/users', usersRouter);
 app.all('/wallet/*', [require('./validator/tokenValidator.js')]);
 app.use('/wallet',walletRouter);
+
+app.get("/",function(req,res) {
+  res.send("koinok");
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

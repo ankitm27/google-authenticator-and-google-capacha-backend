@@ -6,10 +6,10 @@ const responseMessage = require('./../helpers/responseMessage.js');
 const usersDb = require('./../helpers/dbHelper/users.js');
 
 module.exports = (req, res, next) => {
-    if(!req.body.token || typeof req.body.token != "string" || !(req.body.token == req.body.token)){
+    if(!req.headers["token"] || typeof req.headers["token"] != "string" || !(req.headers["token"] == req.headers["token"])){
         return universalFunction.sendError(responseMessage.ERROR.PROVIDE_VALID_DATA);
     }
-    jwt.verify(req.body.token,process.env.JWT_KEY,function(err,result){
+    jwt.verify(req.headers["token"],process.env.JWT_KEY,function(err,result){
         if(err){
             return universalFunction.sendError(responseMessage.ERROR.TOKEN_NOT_VALID,res);
         }else if(result.exp - moment().unix() > 0) {

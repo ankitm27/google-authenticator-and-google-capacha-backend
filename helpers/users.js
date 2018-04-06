@@ -101,32 +101,32 @@ let users = {
             cb(err, null)
         }) : outputPromise;
     },
-    generateQRScanCode: (secret,cb) => {
-        let outputPromise = Promise.resolve()
-        .then(() => {
-                if(!secret || typeof secret != "string" || !(secret == secret.trim() )){
-                    console.log("check");
-                    return Promise.reject(responseMessage.ERROR.PROVIDE_VALID_DATA);
-                }
-                return new Promise((resolve,reject) => {
-                    QRCode.toDataURL(secret.otpauth_url, function(err, dataUrl) {
-                        console.log(dataUrl);
-                        if(err){
-                            return reject(err,null);
-                        }else{
-                            return resolve(null,{secret:secret,dataUrl:dataUrl});
-                        }
-                        //write('<img src="' + data_url + '">');
-                    })
-                })
-            });
-        return cb && typeof cb === "function"
-        ? outputPromise.resolve((result) => {
-            cb(null,result);
-        }).catch((err) => {
-            cb(err,null);
-        }):outputPromise;
-    }
+    //generateQRScanCode: (secret,cb) => {
+    //    let outputPromise = Promise.resolve()
+    //    .then(() => {
+    //            if(!secret || typeof secret != "string" || !(secret == secret.trim() )){
+    //                console.log("check");
+    //                return Promise.reject(responseMessage.ERROR.PROVIDE_VALID_DATA);
+    //            }
+    //            return new Promise((resolve,reject) => {
+    //                QRCode.toDataURL(secret.otpauth_url, function(err, dataUrl) {
+    //                    console.log(dataUrl);
+    //                    if(err){
+    //                        return reject(err,null);
+    //                    }else{
+    //                        return resolve(null,{secret:secret,dataUrl:dataUrl});
+    //                    }
+    //                    //write('<img src="' + data_url + '">');
+    //                })
+    //            })
+    //        });
+    //    return cb && typeof cb === "function"
+    //    ? outputPromise.resolve((result) => {
+    //        cb(null,result);
+    //    }).catch((err) => {
+    //        cb(err,null);
+    //    }):outputPromise;
+    //}
 };
 
 module.exports = users;

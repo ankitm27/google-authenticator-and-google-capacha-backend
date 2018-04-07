@@ -10,11 +10,13 @@ let users = {
     signUp: (req, res, next) => {
         const schema = Joi.object().keys({
             email: Joi.string().required(),
-            password: Joi.string().required()
+            password: Joi.string().required(),
+            gRecaptchaResponse:Joi.string().required(),
         });
         let validateRequest = Joi.validate({
             email: req.body.email,
-            password: req.body.password
+            password: req.body.password,
+            gRecaptchaResponse:req.body.gRecaptchaResponse,
         }, schema);
 
         if (validateRequest.error) {

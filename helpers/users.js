@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const speakeasy = require('speakeasy');
 const QRCode = require('qrcode');
+const rp = require("request-promise");
 
 const responseMessage = require('./responseMessage.js');
 const usersDb = require('./dbHelper/users.js');
@@ -72,7 +73,7 @@ let users = {
                             return validateSecret(uuid, secret, result[0].secret)
                         }).then((result) => {
                             return result
-                                ? usersDb.findAndUpdateData({uuid:uuid},{token:users.generateToken(uuid,process.env.USER_TOKEN_TIMESTAMP,process.env.USER_TOKEN_PARAMETER)})
+                                ? usersDb.findAndUpdateData({uuid: uuid}, {token: users.generateToken(uuid, process.env.USER_TOKEN_TIMESTAMP, process.env.USER_TOKEN_PARAMETER)})
                                 : reject(responseMessage.ERROR.OTP_NOT_MATCH);
                         }).then((result) => {
                             return resolve(result.token);
@@ -88,14 +89,14 @@ let users = {
             cb(err, null)
         }) : outputPromise;
     },
-    generateToken : (uuid,timeStamp,parameter) => {
+    generateToken: (uuid, timeStamp, parameter) => {
         if (!uuid || typeof uuid != "string" || !(uuid == uuid.trim())) {
             return (responseMessage.ERROR.PROVIDE_VALID_DATA);
         }
-        if(!timeStamp || typeof timeStamp != "string" || !(timeStamp == timeStamp.trim())){
+        if (!timeStamp || typeof timeStamp != "string" || !(timeStamp == timeStamp.trim())) {
             return (responseMessage.ERROR.PROVIDE_VALID_DATA);
         }
-        if(!parameter || typeof parameter != "string" || !(parameter == parameter.trim())){
+        if (!parameter || typeof parameter != "string" || !(parameter == parameter.trim())) {
             return (responseMessage.ERROR.PROVIDE_VALID_DATA);
         }
         const payload = {
@@ -105,6 +106,41 @@ let users = {
             exp: moment().add(timeStamp, parameter).unix()
         };
         return jwt.sign(payload, process.env.JWT_KEY);
+    },
+    authenticateCaptcha: (captcha, cb) => {
+        let outputPromise = Promise.resolve()
+            .then(() => {
+                if (!captcha || typeof captcha != "string" || !(captcha == captcha.trim())) {
+                    return Promise.resolve(responseMessage.ERROR.PROVIDE_VALID_DATA);
+                }
+                return new Promise((resolve, reject) => {
+                    var options = {
+                        method: 'POST',
+                        uri: 'https://www.google.com/recaptcha/api/siteverify',
+                        formData: {
+                            'secret': process.env.GOOGLE_CAPTCHA,
+                            'response': captcha
+
+                        }
+                    };
+                    rp(options)
+                        .then((result) => {
+                            console.log("result",result);
+                            return result.success
+                            ? resolve(result)
+                            : reject(responseMessage.ERROR.NOT_VALID_CAPTCHA);
+                        })
+                        .catch((err) => {
+                            return reject(responseMessage.ERROR.ERROR_CONNECTING_GOOGLE_SERVER);
+                        });
+                })
+            });
+        return cb && typeof cb === "function"
+            ? outputPromise.then((result) => {
+            cb(null, null);
+        }).catch((err) => {
+            cb(err, null);
+        }) : outputPromise;
     }
 
 

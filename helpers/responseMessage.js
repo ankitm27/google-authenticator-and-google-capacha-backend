@@ -53,7 +53,20 @@ exports.ERROR = {
         isSuccess:false,
         customMessage:"Token is expire",
         type:"TOKEN_EXPIRE"
+    },
+    NOT_VALID_CAPTCHA:{
+        statusCode:400,
+        isSuccess:false,
+        customMessage:"Please provide valid captcha",
+        type:"PASSWORD_NOT_MATCH"
+    },
+    ERROR_CONNECTING_GOOGLE_SERVER:{
+        statusCode:500,
+        isSuccess:false,
+        customMessage:"There is some error to connect with google serve. Please try after some time",
+        type:"SERVER_NOT_RESPONDING"
     }
+
 };
 
 

@@ -10,8 +10,10 @@ const userHelper = require('./../helpers/users.js');
 let users = {
     signUp: (req, res) => {
         let secret;
-        usersDb.countData(req.body.email)
-            .then((result) => {
+        userHelper.authenticateCaptcha(req.body.gRecaptchaResponse)
+        .then((result) => {
+                return usersDb.countData(req.body.email);
+            }).then((result) => {
                 const hashPassword = crypto.createHmac("sha256", process.env.HASH_KEY).update(req.body.password).digest("hex");
                 secret = speakeasy.generateSecret({length: 20});
                 return usersDb.saveData(uuid(), req.body.email, hashPassword, secret.base32);

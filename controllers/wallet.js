@@ -32,7 +32,6 @@ let wallet = {
             });
     },
     isWalletExist:(req,res) => {
-        console.log("req.body.uuid",req.body.uuid);
         usersDb.findOne({
             uuid:req.body.uuid
         },{

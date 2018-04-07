@@ -23,12 +23,15 @@ git clone https://github.com/ankitm27/koinok_app
 There is two folder front end and backend. Both the app has written seprately.
 
 Move into project backend folder 
+
 run npm install (for downloading all the depandency for backend code)
 Create the .env file as .sampleenv which has all your environment variable stored. Give the value of all parmater 
 according to your configuration.      
+
 For running backend server move into bin folder and run pm2 start www(pm2 is node process manager)
+
 now we can access the backend server at 3000 port
-for check api server is running hit the api -(get request) http://ip:3000 and you will get response koinok
+For checking api server is running hit the api -(get request) http://ip:3000 and you will get response koinok
 
 Move into project frontend folder 
 run npm install(for downloading all the depandency for frontend code)

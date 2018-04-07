@@ -125,8 +125,7 @@ let users = {
                     };
                     rp(options)
                         .then((result) => {
-                            console.log("result",result);
-                            return result.success
+                            return JSON.parse(result.success)
                             ? resolve(result)
                             : reject(responseMessage.ERROR.NOT_VALID_CAPTCHA);
                         })

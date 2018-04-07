@@ -25,7 +25,7 @@ There is two folder front end and backend. Both the app has written seprately.
 Move into project backend folder 
 run npm install (for downloading all the depandency for backend code)
 Create the .env file as .sampleenv which has all your environment variable stored. Give the value of all parmater 
-according to your configration.      
+according to your configuration.      
 For running backend server move into bin folder and run pm2 start www(pm2 is node process manager)
 now we can access the backend server at 3000 port
 for check api server is running hit the api -(get request) http://ip:3000 and you will get response koinok
@@ -33,7 +33,7 @@ for check api server is running hit the api -(get request) http://ip:3000 and yo
 Move into project frontend folder 
 run npm install(for downloading all the depandency for frontend code)
 Create the .env file ad .sampleenv which has all your enviroment variable stored. Give the value of all parameter according 
-to your configration.   
+to your configuration.   
 For running front end server run pm2 start
 now we can access the front end code at 8080 port
 now you can access the code at http://ip:8080/#!

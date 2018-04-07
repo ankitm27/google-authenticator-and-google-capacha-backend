@@ -28,7 +28,8 @@ let users = {
     authenticateEmailPassword: (req, res) => {
         userHelper.authenticateData(req.body.email, req.body.password)
             .then((result) => {
-                universalFunction.sendSuccess(responseMessage.SUCCESS.SUCCESSFULLY_AUTHENTICATE_DATA, {valid: true}, res);
+                universalFunction.sendSuccess(responseMessage.SUCCESS.SUCCESSFULLY_AUTHENTICATE_DATA,
+                    {token:userHelper.generateToken(result,process.env.AUTHENTICATE_TOKEN_TIMESTAMP,process.env.AUTHENTICATE_TOKEN_PARAMETER)}, res);
             }).catch((err) => {
                 universalFunction.sendError(err, res);
             })

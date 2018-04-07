@@ -105,7 +105,7 @@ let users = {
             exp: moment().add(timeStamp, parameter).unix()
         };
         return jwt.sign(payload, process.env.JWT_KEY);
-    },
+    }
 
 
 };

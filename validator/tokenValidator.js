@@ -13,7 +13,7 @@ module.exports = (req, res, next) => {
         if(err){
             return universalFunction.sendError(responseMessage.ERROR.TOKEN_NOT_VALID,res);
         }else if(result.exp - moment().unix() > 0) {
-            usersDb.findOne({token:req.body.token},{_id:0,uuid:1})
+            usersDb.findOne({token:req.headers["token"]},{_id:0,uuid:1})
             .then((result) => {
                     if(result && result.length == 1){
                         req.body.uuid = result[0].uuid;

@@ -30,6 +30,31 @@ let wallet = {
             }).catch((err) => {
                 return universalFunction.sendError(err, res);
             });
+    },
+    isWalletExist:(req,res) => {
+        console.log("req.body.uuid",req.body.uuid);
+        usersDb.findOne({
+            uuid:req.body.uuid
+        },{
+            _id:0,
+            uuid:1,
+            privateKey:1,
+            address:1
+        }).then((result) => {
+            let response = {isWalletGenerated : false};
+            if(result.length == 1 && result[0].privateKey && result[0].address){
+                response = {
+                    isWalletGenerated : true,
+                    address:result[0].address
+                };
+            }
+            if(result.length == 0){
+                return Promise.reject(responseMessage.ERROR.USER_NOT_PRESENT);
+            }
+            return universalFunction.sendSuccess(responseMessage.SUCCESS.SUCCESSFULLY_GET_DATA,response,res);
+        }).catch((err) => {
+            return universalFunction.sendError(err,res);
+        })
     }
 };
 

@@ -1,6 +1,6 @@
 # koinok_app
 
-Basically the project is based on given assignment. In this project I tried to fullfill all backend requirement of assigment.
+Basically the project is based on given assignment. In this project I tried to fullfill all the backend requirements of assigment.
 
 Node.JS and it's framework express is used for developing all api's and mongodb is used as database.
 
@@ -11,7 +11,7 @@ Two factor authentication is added with google authenticator.
 Insatll node.js in system 
 https://www.metachris.com/2017/01/how-to-install-nodejs-6-lts-on-ubuntu-and-centos/
 
-Install mongo db in syatem
+Install mongo db in system
 https://docs.mongodb.com/v3.4/tutorial/install-mongodb-on-ubuntu/
 
 Install pm2 globally 
@@ -23,16 +23,18 @@ git clone https://github.com/ankitm27/koinok_app.git
 
 Installation command
 
+move into the folder 
+
 run npm install(It will install all the dependency) 
 
-Create the .env file as .sampleenv which has all your environment variable stored. Give the value of all parmater 
+Create the .env file as .envsample which has all your environment variable stored. Give the value of all parmater 
 according to your configuration.      
 
 For running backend server move into bin folder and run pm2 start www(pm2 is node process manager)
 
 now we can access the backend server at 3000 port
 
-For checking api server is running hit the api -(get request) http://ip:3000 and you will get response koinok
+For testing api server is running or not hit the api -(get request) http://ip:3000 and you will get the response koinok
 
 
 

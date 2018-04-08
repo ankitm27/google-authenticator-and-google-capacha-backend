@@ -34,7 +34,6 @@ now we can access the backend server at 3000 port
 
 For checking api server is running hit the api -(get request) http://ip:3000 and you will get response koinok
 
-Nginx proxy is used to deployed the app through which you can access the app via port 80
 
 
 

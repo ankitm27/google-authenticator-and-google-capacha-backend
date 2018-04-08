@@ -21,9 +21,8 @@ Clone the repo
 git clone https://github.com/ankitm27/koinok_app
 
 
-Move into project backend folder 
-
-run npm install (for downloading all the depandency for backend code)
+Installation command
+run npm install(It will install all the dependency) 
 Create the .env file as .sampleenv which has all your environment variable stored. Give the value of all parmater 
 according to your configuration.      
 

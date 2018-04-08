@@ -1,4 +1,4 @@
-var cron = require('cron');
+const cron = require('cron');
 const os = require('os-utils');
 const { exec } = require('child_process');
 const dotenv = require('dotenv');

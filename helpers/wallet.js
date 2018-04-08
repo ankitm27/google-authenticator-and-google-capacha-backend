@@ -6,6 +6,13 @@ const usersDb = require('./dbHelper/users.js');
 
 let Wallet = ethers.Wallet;
 
+/**
+ * @author Ankit
+ * @sync
+ * @description encrypt the text
+ * @param {string} text
+ */
+
 let encryptData = (text) => {
     let cipher = crypto.createCipher(process.env.ENCRYPTION_ALGORITHIM, process.env.ENCRYPTION_PASSWORD);
     let crypted = cipher.update(text, 'utf8', 'hex');
@@ -14,6 +21,13 @@ let encryptData = (text) => {
 };
 
 let wallet = {
+    /**
+     * @author Ankit
+     * @async
+     * @description generate ether wallet if not present other wise return from db, returns promise if callback is not provided
+     * @param {string} uuid
+     */
+
     generateWallet: (uuid, cb) => {
         let outputPromise = Promise.resolve()
             .then(() => {

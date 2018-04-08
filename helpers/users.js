@@ -9,6 +9,15 @@ const responseMessage = require('./responseMessage.js');
 const usersDb = require('./dbHelper/users.js');
 
 
+/**
+ * @author Ankit
+ * @sync
+ * @description valid google authenticator otp is valid or not
+ * @param {string} uuid
+ * @param {otp} otp
+ * @param {string} secret
+ */
+
 let validateSecret = (uuid, otp, secret) => {
     if (!uuid || typeof uuid != "string" || !(uuid == uuid.trim())) {
         return (responseMessage.ERROR.PROVIDE_VALID_DATA);
@@ -27,6 +36,14 @@ let validateSecret = (uuid, otp, secret) => {
 };
 
 let users = {
+    /**
+     * @author Ankit
+     * @async
+     * @description authenticate email and password, returns promise if callback is not provided
+     * @param {string} email
+     * @param {string} password
+     */
+
     authenticateData: (email, password, cb) => {
         let outputPromise = Promise.resolve()
             .then(() => {
@@ -58,6 +75,14 @@ let users = {
             cb(err, null);
         }) : outputPromise;
     },
+    /**
+     * @author Ankit
+     * @async
+     * @description authenticate secret, returns promise if callback is not provided
+     * @param {string} uuid
+     * @param {secret} secret
+     */
+
     authenticateSecret: (uuid, secret, cb) => {
         let outputPromise = Promise.resolve()
             .then(() => {
@@ -89,6 +114,15 @@ let users = {
             cb(err, null)
         }) : outputPromise;
     },
+    /**
+     * @author Ankit
+     * @sync
+     * @description generate token
+     * @param {string} uuid
+     * @param {string} timeStamp - number for which token should be generated(ex - 10)
+     * @param {string} parameter - unit for which token should be generated (ex - minutes)
+     */
+
     generateToken: (uuid, timeStamp, parameter) => {
         if (!uuid || typeof uuid != "string" || !(uuid == uuid.trim())) {
             return (responseMessage.ERROR.PROVIDE_VALID_DATA);
@@ -107,6 +141,13 @@ let users = {
         };
         return jwt.sign(payload, process.env.JWT_KEY);
     },
+    /**
+     * @author Ankit
+     * @async
+     * @description authenticate google captcha, returns promise if callback is not provided
+     * @param {string} captcha
+     */
+
     authenticateCaptcha: (captcha, cb) => {
         let outputPromise = Promise.resolve()
             .then(() => {

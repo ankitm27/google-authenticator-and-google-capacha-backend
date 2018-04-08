@@ -1,5 +1,10 @@
 var mongoose = require('mongoose');
 
+/**
+ * @author Ankit
+ * @description Schemas for user collection
+ */
+
 var userSchema = new mongoose.Schema({
     uuid:{type:String,required:true,unique:true},
     email: { type: String,required:true,unique:true},

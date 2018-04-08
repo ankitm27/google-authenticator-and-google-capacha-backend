@@ -7,6 +7,14 @@ const responseMessage = require('./../helpers/responseMessage.js');
 
 
 let users = {
+    /**
+     * @author Ankit
+     * @sync
+     * @description validated parameter for signup request
+     * @param {object} req
+     * @param {object} res
+     */
+
     signUp: (req, res, next) => {
         const schema = Joi.object().keys({
             email: Joi.string().required(),
@@ -26,6 +34,13 @@ let users = {
         next();
     },
 
+    /**
+     * @author Ankit
+     * @sync
+     * @description validate request for authenticate
+     * @param {object} req
+     * @param {object} res
+     */
 
     authenticateEmailPassword: (req, res, next) => {
         const schema = Joi.object().keys({
@@ -43,6 +58,14 @@ let users = {
 
         next();
     },
+
+    /**
+     * @author Ankit
+     * @sync
+     * @description authenticate request for login
+     * @param {object} req
+     * @param {object} res
+     */
 
     login: (req, res, next) => {
         const schema = Joi.object().keys({
@@ -62,8 +85,16 @@ let users = {
 
         next();
     },
+
+    /**
+     * @author Ankit
+     * @sync
+     * @description validate token
+     * @param {object} req
+     * @param {object} res
+     */
+
     validatesToKen: (req, res, next) => {
-        console.log("check");
         if (!req.headers["token"] || typeof req.headers["token"] != "string" || !(req.headers["token"] == req.headers["token"])) {
             return universalFunction.sendError(responseMessage.ERROR.PROVIDE_VALID_DATA, res);
         }
@@ -73,7 +104,6 @@ let users = {
             } else if (result.exp - moment().unix() > 0) {
                 next();
             } else {
-                console.log("check1111");
                 universalFunction.sendError(responseMessage.ERROR.TOKEN_EXPIRE, res);
             }
         });

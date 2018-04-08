@@ -5,6 +5,15 @@ const universalFunction = require('./../helpers/universalFunction.js');
 const responseMessage = require('./../helpers/responseMessage.js');
 const usersDb = require('./../helpers/dbHelper/users.js');
 
+/**
+ * @author Ankit
+ * @async
+ * @description validated token chekc check user present is db
+ * @param {object} req
+ * @param {object} res
+ */
+
+
 module.exports = (req, res, next) => {
     if(!req.headers["token"] || typeof req.headers["token"] != "string" || !(req.headers["token"] == req.headers["token"])){
         return universalFunction.sendError(responseMessage.ERROR.PROVIDE_VALID_DATA);

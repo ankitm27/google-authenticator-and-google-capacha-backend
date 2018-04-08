@@ -12,12 +12,13 @@ const walletRouter = require('./routes/wallet.js');
 
 let app = express();
 
+//load .env file
 dotenv.load();
 
+//mongo connection
 mongoose.connect("mongodb://" + process.env.MONGO_ADDRESS + "/" + process.env.DATABASE, {
   useMongoClient: true
 });
-
 
 mongoose.connection.on('error', function() {
   console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
@@ -33,6 +34,7 @@ mongoose.connection.on('open', function() {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+//middle wares
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -44,6 +46,7 @@ app.use('/users', usersRouter);
 app.all('/wallet/*', [require('./validator/tokenValidator.js')]);
 app.use('/wallet',walletRouter);
 
+//base request
 app.get("/",function(req,res) {
   res.send("koinok");
 })
@@ -63,5 +66,10 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+//for unexpected errors, comment the code because not the good method to stop the server when exception happens
+//process.on('uncaughtException', function (err) {
+//  console.log(err);
+//});
 
 module.exports = app;

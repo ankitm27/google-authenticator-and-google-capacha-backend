@@ -4,6 +4,14 @@ const universalFunction = require('./../helpers/universalFunction.js');
 const responseMessage = require('./../helpers/responseMessage.js');
 
 let wallet = {
+    /**
+     * @author Ankit
+     * @sync
+     * @description validate request for generating ether wallet
+     * @param {object} req
+     * @param {object} res
+     */
+
     etherWallet : (req,res,next) => {
         const schema = Joi.object().keys({
             uuid:Joi.string().required()
@@ -18,6 +26,14 @@ let wallet = {
 
         next();
     },
+
+    /**
+     * @author Ankit
+     * @sync
+     * @description validate request for checking ether wallet is generated or not
+     * @param {object} req
+     * @param {object} res
+     */
 
     isWalletExist : (req,res,next) => {
         const schema = Joi.object().keys({

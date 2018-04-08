@@ -24,11 +24,11 @@ def mail(to_addr_list, subject, message, cc_addr_list=[], from_add=USERNAME, use
 
 def main():
     if sys.argv[1] == "both":
-        msg = "Memory usage is more then threshold, Currently memory usage is " + sys.argv[2] + " %. and  CPU usage is also more then threshold Currentely, Currentely Usage is " + sys.argv[2] + " %."
+        msg = "Memory usage is more than threshold, Currently memory usage is " + sys.argv[2] + " %. and  CPU usage is also more than threshold Currentely, Currentely Usage is " + sys.argv[2] + " %."
     elif sys.argv[1] == "memory":
-        msg = "Memory usage is more then threshold, Currently memory usage is " + sys.argv[2] + " %."
+        msg = "Memory usage is more than threshold, Currently memory usage is " + sys.argv[2] + " %."
     else:
-        msg = "CPU usage is more then threshold Currently, Currently Usage is " + sys.argv[2] + " %."
+        msg = "CPU usage is more than threshold Currently, Currently Usage is " + sys.argv[2] + " %."
     mail(to_addr_list,subject,msg);
 
 

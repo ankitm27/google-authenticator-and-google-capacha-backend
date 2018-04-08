@@ -18,7 +18,7 @@ Install pm2 globally
 npm install pm2 -g
 
 Clone the repo 
-git clone https://github.com/ankitm27/koinok_app
+git clone https://github.com/ankitm27/koinok_app.git
 
 
 Installation command

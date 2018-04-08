@@ -14,6 +14,7 @@ let triggerPythonScript = (type, cpuUsage, memoryUsage) => {
         //console.log("stdout",stdout);
         //console.log("stderr",stderr);
     });
+    console.log("check")
 }
 
 var job = new cron.CronJob('* * * * *', function () {

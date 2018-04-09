@@ -1,7 +1,8 @@
 import sys
 import smtplib
 subject = "Alert usage more then threshold"
-to_addr_list = "ankit.malhotra2506@gmail.com"
+to_addr_list = ["ankit.malhotra2506@gmail.com"]
+//user name and password from where you have to send the email but it needs security change in email settings
 USERNAME = ''
 PASSWORD = ''
 
